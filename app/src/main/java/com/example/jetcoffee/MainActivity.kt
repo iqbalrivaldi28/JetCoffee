@@ -181,6 +181,7 @@ fun BottomBar(
     modifier: Modifier = Modifier
 ) {
     NavigationBar (
+        containerColor = MaterialTheme.colorScheme.background,
         modifier = modifier
     ) {
         val navigationItems = listOf(
