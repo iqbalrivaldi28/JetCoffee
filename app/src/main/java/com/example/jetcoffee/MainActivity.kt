@@ -30,6 +30,7 @@ import com.example.jetcoffee.model.dummyBestSellerMenu
 import com.example.jetcoffee.model.dummyCategory
 import com.example.jetcoffee.model.dummyMenu
 import com.example.jetcoffee.ui.component.CategoryItem
+import com.example.jetcoffee.ui.component.HomeSection
 import com.example.jetcoffee.ui.component.MenuItem
 import com.example.jetcoffee.ui.component.Search
 import com.example.jetcoffee.ui.component.SectionText
@@ -52,16 +53,34 @@ fun JetCoffeeApp() {
     Column (
         modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
+
+        // {* SEBELUM IMPLEMENT SLOT BASED LAYOUT *}
+//        Banner()
+//
+//        SectionText(stringResource(R.string.section_category))
+//        CategoryRow()
+//
+//        SectionText(stringResource(R.string.section_favorite_menu))
+//        MenuRow(dummyMenu)
+//
+//        SectionText(stringResource(R.string.section_best_seller_menu))
+//        MenuRow(dummyBestSellerMenu)
+
+
+        // {*  IMPLEMENT SLOT BASED LAYOUT *}
         Banner()
-
-        SectionText(stringResource(R.string.section_category))
-        CategoryRow()
-
-        SectionText(stringResource(R.string.section_favorite_menu))
-        MenuRow(dummyMenu)
-
-        SectionText(stringResource(R.string.section_best_seller_menu))
-        MenuRow(dummyBestSellerMenu)
+        HomeSection(
+            title = stringResource(R.string.section_category),
+            content = { CategoryRow() }
+        )
+        HomeSection(
+            title = stringResource(R.string.menu_favorite),
+            content = { MenuRow(dummyMenu)}
+        )
+        HomeSection(
+            title = stringResource(R.string.section_best_seller_menu),
+            content = { MenuRow(dummyBestSellerMenu)}
+        )
     }
 }
 
